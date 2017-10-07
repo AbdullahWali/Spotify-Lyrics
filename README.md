@@ -17,8 +17,7 @@ Follow those (hopefully) simple steps to set up Spotify Lyrics:
 ## Usage
 After setting it up for the first time, you only need to use `npm start` from the command line (terminal for MAC/Linux) to run the tool.
 
-Enjoy!!
-
+## Enjoy!!
 Open an issue in github if you encounter any bug!
 
 
