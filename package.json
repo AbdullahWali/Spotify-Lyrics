@@ -4,6 +4,7 @@
   "description": "run a server that automatically detects the song being played on spotify and displays its lyrics",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Wali",
@@ -12,6 +13,7 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.1",
+    "lyric-get": "^1.0.3",
     "opn": "^5.1.0",
     "spotify-web-api-node": "^2.5.0"
   }
