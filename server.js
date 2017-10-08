@@ -32,9 +32,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
+
 //now we can set the route path & initialize the API
 router.get('/', function(req, res) {
-
 	// Get the currently playing
 	spotifyApi.getMyCurrentPlaybackState()
 	  .then(function(data) {
@@ -43,7 +43,12 @@ router.get('/', function(req, res) {
 		l.get(artist, name, function(err, lyrics){
 		    if(err){
 		        console.log(err);
-		        res.send('not found :(');
+		    	res.type('text/html');
+		    	res.write('<center>');
+		    	res.write('<h3>' + artist + ' - ' + name + '</h3>');
+		        res.write('Lyrics not found :(');
+		        res.write('</center>');
+		        res.end();
 		    }
 		    else{
 		    	lyrics = lyrics.replace(/(?:\r\n|\r|\n)/g, '<br />');
@@ -69,7 +74,6 @@ router.get('/', function(req, res) {
 		  }, function(err) {
 		    console.log('Could not refresh access token', err);
 		  });
-	    console.log('Something went wrong!', err);
 	  });
 
 });
