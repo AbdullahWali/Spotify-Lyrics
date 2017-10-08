@@ -41,24 +41,21 @@ router.get('/', function(req, res) {
 	  	let temp  = getSongArtist(data.body);
 	  	let name = temp[0], artist = temp[1];
 		l.get(artist, name, function(err, lyrics){
+			res.type('text/html');
+			res.write('<head><title>Spotify Lyrics</title></head>');
+	    	res.write('<center>');
+			res.write('<h3>' + artist + ' - ' + name + '</h3>');
 		    if(err){
 		        console.log(err);
-		    	res.type('text/html');
-		    	res.write('<center>');
-		    	res.write('<h3>' + artist + ' - ' + name + '</h3>');
 		        res.write('Lyrics not found :(');
-		        res.write('</center>');
-		        res.end();
 		    }
 		    else{
 		    	lyrics = lyrics.replace(/(?:\r\n|\r|\n)/g, '<br />');
-		    	res.type('text/html');
-		    	res.write('<center>');
-		    	res.write('<h3>' + artist + ' - ' + name + '</h3>');
 		        res.write(lyrics);
-		        res.write('</center>');
-		        res.end();
 		    }
+	        res.write('</center>');
+	        res.end();
+
 		});
 
 	  }, function(err) {
